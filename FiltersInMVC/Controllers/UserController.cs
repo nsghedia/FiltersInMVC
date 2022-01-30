@@ -11,6 +11,8 @@ public class UserController : ControllerBase
     [HttpGet]
     [ActionFilterAttributeAsync("UserController_Action", -100)]
     [ResourceFilterAttribute("UserController_Action")]
+    //[ServiceFilterAttribute(typeof(ResultFilterAttribute))]
+    [TypeFilter(typeof(ResultFilterAttribute), Arguments = new object[] { "Action" })]
     public IEnumerable<string> Get()
     {
         return new string[] { "value1", "value2", "UserController" };
