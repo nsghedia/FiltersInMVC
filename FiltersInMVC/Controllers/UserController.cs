@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/[controller]")]
 [ApiController]
 [ActionFilterAttributeAsync("UserController", -10)]
+[ResourceFilterAttribute("UserController")]
 public class UserController : ControllerBase
 {
     // GET: api/<UserController>
     [HttpGet]
-    [ActionFilterAttributeAsync("UserController_Action",-100)]
+    [ActionFilterAttributeAsync("UserController_Action", -100)]
+    [ResourceFilterAttribute("UserController_Action")]
     public IEnumerable<string> Get()
     {
         return new string[] { "value1", "value2", "UserController" };
