@@ -11,8 +11,8 @@ public class ActionFilterAttributeAsync : Attribute, IAsyncActionFilter, IOrdere
     }
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
-        Console.WriteLine($"Before async execution {_name}");
+        Console.WriteLine($"ActionFilterAttributeAsync_ Before async {_name} {Order}");
         await next();
-        Console.WriteLine($"After async execution {_name}");
+        Console.WriteLine($"ActionFilterAttributeAsync_ After async {_name} {Order}");
     }
 }

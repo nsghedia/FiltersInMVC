@@ -10,13 +10,13 @@ public class ActionFilterAttribute : Attribute, IActionFilter, IOrderedFilter
         Order = order;
     }
 
-    public void OnActionExecuted(ActionExecutedContext context)
-    {
-        Console.WriteLine($"OnActionExecuted - {_name}");
-    }
-
     public void OnActionExecuting(ActionExecutingContext context)
     {
-        Console.WriteLine($"OnActionExecuting - {_name}");
+        Console.WriteLine($"ActionFilterAttribute_ Before {_name} {Order}");
+    }
+
+    public void OnActionExecuted(ActionExecutedContext context)
+    {
+        Console.WriteLine($"ActionFilterAttribute_ After {_name} {Order}");
     }
 }
