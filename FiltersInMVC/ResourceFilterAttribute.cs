@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace FiltersInMVC;
 public class ResourceFilterAttribute : Attribute, IResourceFilter
@@ -11,6 +12,10 @@ public class ResourceFilterAttribute : Attribute, IResourceFilter
     public void OnResourceExecuting(ResourceExecutingContext context)
     {
         Console.WriteLine($"ResourceFilterAttribute_ Before {_name}");
+        context.Result = new ContentResult()
+        {
+            Content = "This is Shortcircuited pipeline"
+        };
     }
 
     public void OnResourceExecuted(ResourceExecutedContext context)
